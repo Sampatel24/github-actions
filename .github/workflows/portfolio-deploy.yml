@@ -1,12 +1,13 @@
-# This workflow name is "Portfolio". It will deploy the portfolio to GitHub Pages whenever there is a push to the main branch.
-name: Portfolio
+# This workflow name is "Portfolio". It is a descriptive name that indicates the purpose of the workflow, which is to deploy a portfolio website.
 
-# This workflow trigger is set to run on a push event to the main branch.
-# Whenever there is a push to the main branch, this workflow will be triggered and will execute the defined jobs.
+# This workflow trigger is set to activate on two events:
+# 1. A push to the main branch: Whenever there is a push to the main branch of the repository, this workflow will be triggered. 
+# 2. Manual trigger: The workflow can also be triggered manually using the "workflow_dispatch" event, allowing users to run the workflow on demand from the GitHub Actions interface.
 on:
     push:
         branches:
             - main
+    workflow_dispatch:
 
 # This section defines the permissions required for the workflow to execute. 
 # It specifies that the workflow needs write permissions for GitHub Pages and ID tokens.
