@@ -1,1 +1,1 @@
-#This is a GitHub Action practice repo
+This is a GitHub Action practice repo
