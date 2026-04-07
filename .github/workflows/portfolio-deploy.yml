@@ -1,4 +1,5 @@
 # This workflow name is "Portfolio". It is a descriptive name that indicates the purpose of the workflow, which is to deploy a portfolio website.
+name: Portfolio
 
 # This workflow trigger is set to activate on two events:
 # 1. A push to the main branch: Whenever there is a push to the main branch of the repository, this workflow will be triggered. 
