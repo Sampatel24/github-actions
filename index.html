@@ -9,16 +9,10 @@
 
 <style>
 :root {
+    --primary: #00d4ff;
     --bg: #0f2027;
     --text: #ffffff;
-    --accent: #00d4ff;
     --glass: rgba(255,255,255,0.08);
-}
-
-body.light {
-    --bg: #f5f7fa;
-    --text: #111;
-    --glass: rgba(255,255,255,0.6);
 }
 
 * {
@@ -34,55 +28,55 @@ body {
     overflow-x:hidden;
 }
 
-/* Animated Background */
+/* Animated Gradient Background */
 body::before {
     content:"";
     position:fixed;
     width:200%;
     height:200%;
-    background: radial-gradient(circle at 30% 30%, #00d4ff33, transparent),
-                radial-gradient(circle at 70% 70%, #ff00ff22, transparent);
-    animation: moveBg 15s infinite alternate;
+    background: radial-gradient(circle at 20% 20%, #00d4ff22, transparent),
+                radial-gradient(circle at 80% 80%, #ff00ff22, transparent);
+    animation: moveBg 12s infinite alternate;
     z-index:-1;
 }
 
 @keyframes moveBg {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(-10%, -10%); }
+    from { transform: translate(0,0); }
+    to { transform: translate(-10%, -10%); }
 }
 
 /* Glass */
 .glass {
     background: var(--glass);
     backdrop-filter: blur(15px);
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* Header */
 header {
-    position:fixed;
-    width:100%;
-    padding:20px 10%;
+    position: fixed;
+    width: 100%;
+    padding: 20px 10%;
     display:flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items:center;
     z-index:1000;
 }
 
 nav a {
     margin-left:20px;
+    color:white;
     text-decoration:none;
-    color:var(--text);
     position:relative;
 }
 
 nav a::after {
     content:"";
     position:absolute;
-    width:0%;
+    width:0;
     height:2px;
-    background:var(--accent);
+    background:var(--primary);
     bottom:-5px;
     left:0;
     transition:0.3s;
@@ -98,25 +92,55 @@ section {
     min-height:100vh;
 }
 
-/* Hero */
-#hero h1 {
-    font-size:3.5rem;
+/* HERO */
+.hero {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
 }
 
-#typing {
-    color:var(--accent);
-    font-size:1.5rem;
-    margin:10px 0;
+.hero-text {
+    max-width:600px;
+}
+
+.hero h1 {
+    font-size:3rem;
+}
+
+.hero span {
+    color:var(--primary);
+}
+
+.hero p {
+    margin:15px 0;
+    opacity:0.8;
+}
+
+/* Profile Image */
+.profile {
+    width:300px;
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+.profile img {
+    width:100%;
+}
+
+.profile:hover {
+    transform:scale(1.05) rotate(1deg);
 }
 
 /* Button */
 .btn {
+    display:inline-block;
     padding:12px 25px;
     border-radius:30px;
-    background:var(--accent);
+    background:var(--primary);
     color:black;
-    display:inline-block;
-    margin-top:20px;
+    text-decoration:none;
     transition:0.3s;
 }
 
@@ -135,44 +159,32 @@ section {
 .card {
     padding:25px;
     transition:0.4s;
-    transform-style: preserve-3d;
 }
 
 .card:hover {
-    transform: rotateY(5deg) rotateX(5deg) scale(1.03);
+    transform: translateY(-10px) scale(1.02);
 }
 
 /* Skills */
-.skill-bar {
-    margin:15px 0;
+.skill {
+    padding:10px;
+    border-radius:10px;
+    background:#ffffff10;
+    text-align:center;
+    transition:0.3s;
 }
 
-.bar {
-    height:8px;
-    background:#444;
-    border-radius:10px;
-}
-
-.bar span {
-    display:block;
-    height:100%;
-    background:var(--accent);
-    border-radius:10px;
-}
-
-/* Toggle */
-.toggle {
-    cursor:pointer;
-    padding:5px 10px;
-    border-radius:10px;
-    border:1px solid #fff3;
+.skill:hover {
+    background:var(--primary);
+    color:black;
+    transform:scale(1.1);
 }
 
 /* Footer */
 footer {
     text-align:center;
     padding:20px;
-    opacity:0.7;
+    opacity:0.6;
 }
 </style>
 </head>
@@ -182,33 +194,42 @@ footer {
 <header class="glass">
     <h2>Samir Patel</h2>
     <nav>
-        <a href="#hero">Home</a>
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
-    <div class="toggle" onclick="toggleTheme()">🌙</div>
 </header>
 
-<section id="hero">
-    <h1>Hi, I'm Samir 👋</h1>
-    <div id="typing"></div>
-    <p>Building scalable data systems, ML solutions, and cloud architectures.</p>
-    <a href="#contact" class="btn">Let's Connect</a>
-</section>
-
-<section id="about">
-    <div class="glass card">
-        <h2>About Me</h2>
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-text">
+        <h1>Hi, I'm <span>Samir Patel</span></h1>
+        <h3>Data Engineer @ Siemens (Brightly Software)</h3>
         <p>
-            Data Engineer at Siemens (Brightly Software) with strong expertise in AWS, ML, and large-scale data systems.
-            Passionate about turning data into real-world impact.
+            I design scalable data systems, build ML-powered solutions, and turn complex data into meaningful insights.
         </p>
+        <a href="#contact" class="btn">Connect with Me</a>
+    </div>
+
+    <div class="profile glass">
+        <img src="SamirPatel.JPEG" alt="Samir Patel">
     </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+<div class="glass card">
+<h2>About Me</h2>
+<p>
+Data Engineer based in Melbourne with strong experience in AWS, Machine Learning, and cloud infrastructure.
+I specialize in solving real-world problems using data, automation, and scalable architecture.
+</p>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
 <section id="experience">
 <h2>Experience</h2>
 <div class="grid">
@@ -216,95 +237,56 @@ footer {
 <div class="glass card">
 <h3>Brightly Software (Siemens)</h3>
 <p>Integration & Data Engineer</p>
-<p>Automation, AWS, ML, APIs</p>
+<p>Asset optimization, ML models, AWS, APIs</p>
 </div>
 
 <div class="glass card">
 <h3>CloudMarc</h3>
 <p>Data Engineer</p>
-<p>GCP, Terraform, CI/CD</p>
+<p>GCP, Terraform, CI/CD pipelines</p>
 </div>
 
 <div class="glass card">
-<h3>Financial Fox</h3>
-<p>Data Scientist</p>
-<p>ML, Tableau, Analytics</p>
+<h3>Zensar Technologies</h3>
+<p>Data Analyst</p>
+<p>SQL, dashboards, large-scale data processing</p>
 </div>
 
 </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-<h2>Skills</h2>
-
-<div class="skill-bar">Python<div class="bar"><span style="width:95%"></span></div></div>
-<div class="skill-bar">SQL<div class="bar"><span style="width:90%"></span></div></div>
-<div class="skill-bar">AWS<div class="bar"><span style="width:85%"></span></div></div>
-<div class="skill-bar">Machine Learning<div class="bar"><span style="width:88%"></span></div></div>
-<div class="skill-bar">Terraform<div class="bar"><span style="width:80%"></span></div></div>
-
-</section>
-
-<section id="projects">
-<h2>Projects</h2>
+<h2>Core Skills</h2>
 <div class="grid">
-
-<div class="glass card">
-<h3>Obstacle Detection AI</h3>
-<p>Assistive AI system for visually impaired.</p>
-</div>
-
-<div class="glass card">
-<h3>Cloud Health Monitoring</h3>
-<p>Sensor-based obesity monitoring.</p>
-</div>
-
-<div class="glass card">
-<h3>ML Optimization Engine</h3>
-<p>Asset optimization using ML.</p>
-</div>
-
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">AWS</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">Terraform</div>
+<div class="skill">Power BI</div>
+<div class="skill">Tableau</div>
+<div class="skill">Docker</div>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <div class="glass card">
 <h2>Contact</h2>
 <p>Email: patelsamir833@gmail.com</p>
 <p>Phone: +61 466 560 000</p>
-<p><a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank">LinkedIn</a></p>
+<p>
+<a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank">
+LinkedIn Profile
+</a>
+</p>
 </div>
 </section>
 
 <footer>
 <p>© 2026 Samir Patel</p>
 </footer>
-
-<script>
-// Typing Animation
-const roles = ["Data Engineer", "ML Engineer", "AWS Specialist"];
-let i=0, j=0, current="", isDeleting=false;
-
-function type(){
-    current = roles[i];
-    document.getElementById("typing").textContent = current.substring(0,j);
-
-    if(!isDeleting && j < current.length) j++;
-    else if(isDeleting && j > 0) j--;
-    else {
-        isDeleting = !isDeleting;
-        if(!isDeleting) i = (i+1)%roles.length;
-    }
-
-    setTimeout(type, isDeleting ? 50 : 100);
-}
-type();
-
-// Theme toggle
-function toggleTheme(){
-    document.body.classList.toggle("light");
-}
-</script>
 
 </body>
 </html>
