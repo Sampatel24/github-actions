@@ -3,193 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samir Patel | Data Engineer</title>
+<title>Samir Patel | Elite Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --primary: #00d4ff;
-    --bg: #0f2027;
-    --text: #ffffff;
-    --glass: rgba(255,255,255,0.08);
+    --accent:#00d4ff;
+    --bg:#0b0f1a;
+    --glass:rgba(255,255,255,0.06);
 }
 
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
-body {
-    background: var(--bg);
-    color: var(--text);
+body{
+    background:var(--bg);
+    color:white;
     overflow-x:hidden;
 }
 
-/* Animated Gradient Background */
-body::before {
-    content:"";
+/* PARTICLE BG */
+canvas{
     position:fixed;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle at 20% 20%, #00d4ff22, transparent),
-                radial-gradient(circle at 80% 80%, #ff00ff22, transparent);
-    animation: moveBg 12s infinite alternate;
+    top:0;left:0;
     z-index:-1;
 }
 
-@keyframes moveBg {
-    from { transform: translate(0,0); }
-    to { transform: translate(-10%, -10%); }
+/* GLASS */
+.glass{
+    background:var(--glass);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
-/* Glass */
-.glass {
-    background: var(--glass);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Header */
-header {
-    position: fixed;
-    width: 100%;
-    padding: 20px 10%;
+/* NAV */
+header{
+    position:fixed;
+    width:100%;
+    padding:20px 10%;
     display:flex;
-    justify-content: space-between;
-    align-items:center;
+    justify-content:space-between;
     z-index:1000;
 }
 
-nav a {
+nav a{
     margin-left:20px;
-    color:white;
     text-decoration:none;
-    position:relative;
+    color:white;
+    opacity:0.7;
 }
 
-nav a::after {
-    content:"";
-    position:absolute;
-    width:0;
-    height:2px;
-    background:var(--primary);
-    bottom:-5px;
-    left:0;
-    transition:0.3s;
+nav a.active, nav a:hover{
+    opacity:1;
+    color:var(--accent);
 }
 
-nav a:hover::after {
-    width:100%;
-}
-
-/* Sections */
-section {
-    padding:120px 10%;
+/* SECTIONS */
+section{
     min-height:100vh;
+    padding:120px 10%;
 }
 
 /* HERO */
-.hero {
+.hero{
     display:flex;
     align-items:center;
     justify-content:space-between;
     flex-wrap:wrap;
 }
 
-.hero-text {
-    max-width:600px;
+.hero h1{
+    font-size:3.5rem;
 }
 
-.hero h1 {
-    font-size:3rem;
+.typing{
+    color:var(--accent);
+    margin:10px 0;
 }
 
-.hero span {
-    color:var(--primary);
-}
-
-.hero p {
-    margin:15px 0;
-    opacity:0.8;
-}
-
-/* Profile Image */
-.profile {
-    width:300px;
+/* IMAGE */
+.profile{
+    width:320px;
     border-radius:20px;
     overflow:hidden;
-    transition:0.4s;
+    transform-style:preserve-3d;
 }
 
-.profile img {
-    width:100%;
-}
+.profile img{width:100%;}
 
-.profile:hover {
-    transform:scale(1.05) rotate(1deg);
-}
-
-/* Button */
-.btn {
-    display:inline-block;
+/* BUTTON */
+.btn{
     padding:12px 25px;
-    border-radius:30px;
-    background:var(--primary);
+    background:var(--accent);
     color:black;
-    text-decoration:none;
-    transition:0.3s;
+    border-radius:30px;
+    display:inline-block;
+    margin-top:20px;
+    transition:0.2s;
 }
 
-.btn:hover {
+.btn:hover{
     transform:scale(1.1);
 }
 
-/* Grid */
-.grid {
+/* GRID */
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
 
-/* Cards */
-.card {
+/* CARD */
+.card{
     padding:25px;
-    transition:0.4s;
+    transition:0.3s;
+    transform-style:preserve-3d;
 }
 
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
+.card:hover{
+    transform:rotateY(10deg) rotateX(5deg);
 }
 
-/* Skills */
-.skill {
-    padding:10px;
+/* SKILLS */
+.skill{
+    padding:12px;
+    text-align:center;
     border-radius:10px;
     background:#ffffff10;
-    text-align:center;
-    transition:0.3s;
 }
 
-.skill:hover {
-    background:var(--primary);
+.skill:hover{
+    background:var(--accent);
     color:black;
-    transform:scale(1.1);
 }
 
-/* Footer */
-footer {
-    text-align:center;
-    padding:20px;
-    opacity:0.6;
+/* REVEAL */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
+
+<canvas id="bg"></canvas>
 
 <header class="glass">
     <h2>Samir Patel</h2>
@@ -202,91 +167,111 @@ footer {
     </nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
-    <div class="hero-text">
-        <h1>Hi, I'm <span>Samir Patel</span></h1>
-        <h3>Data Engineer @ Siemens (Brightly Software)</h3>
-        <p>
-            I design scalable data systems, build ML-powered solutions, and turn complex data into meaningful insights.
-        </p>
-        <a href="#contact" class="btn">Connect with Me</a>
+    <div>
+        <h1>Samir Patel</h1>
+        <div class="typing" id="typing"></div>
+        <p>Designing scalable data systems & ML solutions.</p>
+        <a href="#contact" class="btn">Hire Me</a>
     </div>
 
-    <div class="profile glass">
+    <div class="profile glass" id="tilt">
         <img src="SamirPatel.JPEG" alt="Samir Patel">
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<section id="about" class="hidden">
 <div class="glass card">
 <h2>About Me</h2>
-<p>
-Data Engineer based in Melbourne with strong experience in AWS, Machine Learning, and cloud infrastructure.
-I specialize in solving real-world problems using data, automation, and scalable architecture.
-</p>
+<p>Data Engineer at Siemens (Brightly Software) specializing in AWS, ML, and cloud infrastructure.</p>
 </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="hidden">
 <h2>Experience</h2>
 <div class="grid">
 
-<div class="glass card">
-<h3>Brightly Software (Siemens)</h3>
-<p>Integration & Data Engineer</p>
-<p>Asset optimization, ML models, AWS, APIs</p>
-</div>
-
-<div class="glass card">
-<h3>CloudMarc</h3>
-<p>Data Engineer</p>
-<p>GCP, Terraform, CI/CD pipelines</p>
-</div>
-
-<div class="glass card">
-<h3>Zensar Technologies</h3>
-<p>Data Analyst</p>
-<p>SQL, dashboards, large-scale data processing</p>
-</div>
+<div class="glass card">Siemens (Brightly)<br>Data Engineer</div>
+<div class="glass card">CloudMarc<br>Data Engineer</div>
+<div class="glass card">Zensar<br>Data Analyst</div>
 
 </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
-<h2>Core Skills</h2>
+<section id="skills" class="hidden">
+<h2>Skills</h2>
 <div class="grid">
 <div class="skill">Python</div>
 <div class="skill">SQL</div>
 <div class="skill">AWS</div>
-<div class="skill">Machine Learning</div>
+<div class="skill">ML</div>
 <div class="skill">Terraform</div>
-<div class="skill">Power BI</div>
-<div class="skill">Tableau</div>
 <div class="skill">Docker</div>
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="hidden">
 <div class="glass card">
 <h2>Contact</h2>
 <p>Email: patelsamir833@gmail.com</p>
-<p>Phone: +61 466 560 000</p>
-<p>
-<a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank">
-LinkedIn Profile
-</a>
-</p>
+<p>LinkedIn: samir-patel</p>
 </div>
 </section>
 
-<footer>
-<p>© 2026 Samir Patel</p>
-</footer>
+<script>
+// Typing
+const roles=["Data Engineer","ML Engineer","AWS Specialist"];
+let i=0,j=0,del=false;
+function type(){
+let txt=roles[i];
+document.getElementById("typing").innerText=txt.substring(0,j);
+if(!del && j<txt.length) j++;
+else if(del && j>0) j--;
+else {del=!del;if(!del)i=(i+1)%roles.length;}
+setTimeout(type,del?50:100);
+}
+type();
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add("show");
+});
+});
+document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
+
+// Tilt
+const tilt=document.getElementById("tilt");
+tilt.addEventListener("mousemove",(e)=>{
+let x=e.offsetX/tilt.clientWidth-0.5;
+let y=e.offsetY/tilt.clientHeight-0.5;
+tilt.style.transform=`rotateY(${x*20}deg) rotateX(${-y*20}deg)`;
+});
+tilt.addEventListener("mouseleave",()=>tilt.style.transform="rotateY(0)");
+
+// Particle BG
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:1,vy:1});
+}
+
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x>c.width||p.x<0)p.vx*=-1;
+if(p.y>c.height||p.y<0)p.vy*=-1;
+ctx.fillRect(p.x,p.y,2,2);
+});
+requestAnimationFrame(draw);
+}
+draw();
+</script>
 
 </body>
 </html>
