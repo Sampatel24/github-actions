@@ -3,7 +3,8 @@ name: Hello workflow
 
 # workflow runs on an automatic trigger, which will initiate the workflow whenever a change is pushed to the branch (deployment0
 on:
-  workflow_dispatch: 
+  push:
+    branches: [main]
 
 
 #These are jobs inside the workflow
