@@ -42,7 +42,10 @@ jobs:
             # Step 3: Static code artifacts for static website hosting via pre-built actions
             - name: Upload Static Files
               uses: actions/upload-pages-artifact@v4
-
+              with:
+                path: '.' 
+                # This is the path to the static files. In this case, it is set to the current directory ('.') that need to be uploaded for deployment. 
+                
             # Step 4: Deploy to GitHub Pages to make the Page Live via pre-built actions
             - name: Deploy to GitHub Pages
               uses: actions/deploy-pages@v4
