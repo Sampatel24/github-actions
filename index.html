@@ -14,7 +14,13 @@
     --glass:rgba(255,255,255,0.06);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+    scroll-behavior:smooth;
+}
 
 body{
     background:var(--bg);
@@ -90,7 +96,10 @@ section{
     transform-style:preserve-3d;
 }
 
-.profile img{width:100%;}
+.profile img{
+    width:100%;
+    display:block;
+}
 
 /* BUTTON */
 .btn{
@@ -176,7 +185,7 @@ section{
     </div>
 
     <div class="profile glass" id="tilt">
-        <img src="SamirPatel.JPEG" alt="Profile Picture">
+        <img src="SamirPatel.JPEG" alt="Samir Patel Profile Picture">
     </div>
 </section>
 
@@ -190,11 +199,9 @@ section{
 <section id="experience" class="hidden">
 <h2>Experience</h2>
 <div class="grid">
-
 <div class="glass card">Siemens (Brightly)<br>Data Engineer</div>
 <div class="glass card">CloudMarc<br>Data Engineer</div>
 <div class="glass card">Zensar<br>Data Analyst</div>
-
 </div>
 </section>
 
@@ -210,7 +217,6 @@ section{
 </div>
 </section>
 
-<!-- CONTACT (MERGED) -->
 <section id="contact">
 <h2>Contact</h2>
 
@@ -223,7 +229,7 @@ patelsamir833@gmail.com
 </p>
 
 <p>💼 LinkedIn: 
-<a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank">
+<a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank" rel="noopener noreferrer">
 linkedin.com/in/samir-patel-33862284
 </a>
 </p>
@@ -237,52 +243,83 @@ linkedin.com/in/samir-patel-33862284
 // Typing
 const roles=["Data Engineer","ML Engineer","AWS Specialist"];
 let i=0,j=0,del=false;
+
 function type(){
-let txt=roles[i];
-document.getElementById("typing").innerText=txt.substring(0,j);
-if(!del && j<txt.length) j++;
-else if(del && j>0) j--;
-else {del=!del;if(!del)i=(i+1)%roles.length;}
-setTimeout(type,del?50:100);
+    const el=document.getElementById("typing");
+    if(!el) return;
+
+    let txt=roles[i];
+    el.innerText=txt.substring(0,j);
+
+    if(!del && j<txt.length) j++;
+    else if(del && j>0) j--;
+    else {
+        del=!del;
+        if(!del) i=(i+1)%roles.length;
+    }
+
+    setTimeout(type,del?50:100);
 }
 type();
 
 // Reveal
 const obs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{
-if(e.isIntersecting)e.target.classList.add("show");
+if(e.isIntersecting) e.target.classList.add("show");
 });
 });
+
 document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
 
 // Tilt
 const tilt=document.getElementById("tilt");
+
+if(tilt){
 tilt.addEventListener("mousemove",(e)=>{
 let x=e.offsetX/tilt.clientWidth-0.5;
 let y=e.offsetY/tilt.clientHeight-0.5;
 tilt.style.transform=`rotateY(${x*20}deg) rotateX(${-y*20}deg)`;
 });
-tilt.addEventListener("mouseleave",()=>tilt.style.transform="rotateY(0)");
+
+tilt.addEventListener("mouseleave",()=>{
+tilt.style.transform="rotateY(0) rotateX(0)";
+});
+}
 
 // Particle BG
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
+
+function resizeCanvas(){
 c.width=window.innerWidth;
 c.height=window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let particles=[];
 for(let i=0;i<80;i++){
-particles.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:1,vy:1});
+particles.push({
+x:Math.random()*c.width,
+y:Math.random()*c.height,
+vx:Math.random()*2-1,
+vy:Math.random()*2-1
+});
 }
 
 function draw(){
 ctx.clearRect(0,0,c.width,c.height);
+
 particles.forEach(p=>{
-p.x+=p.vx;p.y+=p.vy;
-if(p.x>c.width||p.x<0)p.vx*=-1;
-if(p.y>c.height||p.y<0)p.vy*=-1;
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x>c.width||p.x<0) p.vx*=-1;
+if(p.y>c.height||p.y<0) p.vy*=-1;
+
 ctx.fillRect(p.x,p.y,2,2);
 });
+
 requestAnimationFrame(draw);
 }
 draw();
