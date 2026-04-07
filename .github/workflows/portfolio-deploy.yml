@@ -11,11 +11,12 @@ on:
     workflow_dispatch:
 
 # This section defines the permissions required for the workflow to execute. 
-# It specifies that the workflow needs write permissions for GitHub Pages and ID tokens.
+# It specifies that the workflow needs read permissions for contents and write permissions for GitHub Pages and ID tokens.
 # This is necessary for deploying the portfolio to GitHub Pages and for authentication purposes.            
 permissions:
     pages: write
     id-token: write
+    contents: read
 
 #This section defines the jobs that will be executed when the workflow is triggered. 
 jobs:

@@ -1,73 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samir Patel | Data Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+    }
+
+    /* Glass Effect */
+    .glass {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        padding: 20px 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    header nav a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: white;
+        transition: 0.3s;
+    }
+
+    header nav a:hover {
+        color: #00d4ff;
+    }
+
+    section {
+        padding: 100px 10%;
+        min-height: 100vh;
+    }
+
+    /* Hero */
+    #hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    #hero h2 {
+        color: #00d4ff;
+        margin: 10px 0;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        background: #00d4ff;
+        color: black;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        background: #00aacc;
+    }
+
+    /* Cards */
+    .card {
+        padding: 25px;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    /* Grid */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* Skills */
+    .skill {
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        background: rgba(255,255,255,0.1);
+        transition: 0.3s;
+    }
+
+    .skill:hover {
+        background: #00d4ff;
+        color: black;
+        transform: scale(1.1);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        opacity: 0.7;
+    }
+</style>
 </head>
+
 <body>
 
-    <!-- Navigation Header -->
-    <header>
-        <h1>John Doe</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="glass">
+    <h2>Samir Patel</h2>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <hr>
+<!-- HERO -->
+<section id="hero">
+    <h1>Hi, I'm Samir 👋</h1>
+    <h2>Data Engineer | ML Enthusiast | AWS Specialist</h2>
+    <p>I transform complex data into actionable insights using modern data engineering, machine learning, and cloud technologies.</p>
+    <a href="#contact" class="btn">Let's Connect</a>
+</section>
 
-    <!-- About Section -->
-    <section id="about">
+<!-- ABOUT -->
+<section id="about">
+    <div class="glass card">
         <h2>About Me</h2>
-        <p>I am a passionate developer focused on building clean and functional web applications. I enjoy solving complex problems and learning new technologies.</p>
-    </section>
+        <p>
+            I'm a Data Engineer at Brightly Software (Siemens Group) with a strong passion for building scalable data solutions.
+            With experience in Python, SQL, Machine Learning, and AWS, I specialize in transforming structured and unstructured data into meaningful insights.
+        </p>
+    </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li>HTML5 & Semantic Markup</li>
-            <li>CSS3 & Responsive Design</li>
-            <li>JavaScript (ES6+)</li>
-            <li>Git & Version Control</li>
-        </ul>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+    <h2>Experience</h2>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        
-        <h3>1. E-commerce Landing Page</h3>
-        <p>A fully responsive landing page for a fictional retail brand.</p>
-        <p><strong>Tech Stack:</strong> HTML, CSS</p>
-        <a href="#">View Live Demo</a> | <a href="#">View Source Code</a>
+    <div class="grid">
 
-        <h3>2. Weather Dashboard</h3>
-        <p>A web application that fetches real-time weather data using a public API.</p>
-        <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
-        <a href="#">View Live Demo</a> | <a href="#">View Source Code</a>
-    </section>
+        <div class="glass card">
+            <h3>Brightly Software (Siemens)</h3>
+            <p><strong>Integration & Data Engineer</strong></p>
+            <p>2023 - Present</p>
+            <p>Working on asset optimisation, APIs, AWS automation, ML solutions, and customer integrations.</p>
+        </div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out for collaborations or inquiries!</p>
-        <ul>
-            <li>Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></li>
-            <li>LinkedIn: <a href="https://linkedin.com">://linkedin.com</a></li>
-            <li>GitHub: <a href="https://github.com">://github.com</a></li>
-        </ul>
-    </section>
+        <div class="glass card">
+            <h3>CloudMarc</h3>
+            <p><strong>Data Engineer</strong></p>
+            <p>2022 - 2023</p>
+            <p>Built cloud infrastructure in GCP using Terraform, managed pipelines, and ML models.</p>
+        </div>
 
-    <footer>
-        <p>&copy; 2024 John Doe. Built with pure HTML.</p>
-    </footer>
+        <div class="glass card">
+            <h3>The Financial Fox</h3>
+            <p><strong>Data Analyst / Data Scientist</strong></p>
+            <p>2019 - 2020</p>
+            <p>Developed dashboards, ML models, and performed analytics using Python & Tableau.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Skills</h2>
+
+    <div class="grid">
+        <div class="skill">Python</div>
+        <div class="skill">SQL</div>
+        <div class="skill">AWS</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">Terraform</div>
+        <div class="skill">Power BI</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">Docker</div>
+        <div class="skill">GCP</div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects & Research</h2>
+
+    <div class="grid">
+
+        <div class="glass card">
+            <h3>Obstacle Detection System</h3>
+            <p>Smartphone-based system for visually impaired using AI & sensors.</p>
+        </div>
+
+        <div class="glass card">
+            <h3>Obesity Monitoring System</h3>
+            <p>Cloud & sensor-based health tracking system.</p>
+        </div>
+
+        <div class="glass card">
+            <h3>Assistive AI System</h3>
+            <p>AI-driven assistive system for visually impaired users.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="glass card">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:patelsamir833@gmail.com">patelsamir833@gmail.com</a></p>
+        <p>Phone: +61 466 560 000</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/samir-patel-33862284/" target="_blank">samir-patel</a></p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Samir Patel | Built with ❤️</p>
+</footer>
 
 </body>
 </html>
