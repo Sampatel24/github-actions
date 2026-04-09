@@ -5,9 +5,9 @@ name: Portfolio
 # 1. A push to the main branch: Whenever there is a push to the main branch of the repository, this workflow will be triggered. 
 # 2. Manual trigger: The workflow can also be triggered manually using the "workflow_dispatch" event, allowing users to run the workflow on demand from the GitHub Actions interface.
 on:
-    push:
-        branches:
-            - main
+    # push:
+    #     branches:
+    #         - main
     workflow_dispatch:
 
 # This section defines the permissions required for the workflow to execute. 
