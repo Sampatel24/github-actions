@@ -10,7 +10,7 @@ jobs:
     deploy-app:
 
         runs-on: self-hosted
-        
+
         env:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER}}
 
@@ -19,6 +19,9 @@ jobs:
 
             - name: Checkout code
               uses: actions/checkout@v4
+
+            - name: Set up Docker Compose
+              uses: docker/setup-compose-action@v2
 
             - name: Deploy the flask app using Docker Compose
               run: docker compose up -d --build
