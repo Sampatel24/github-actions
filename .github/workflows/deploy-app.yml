@@ -24,6 +24,6 @@ jobs:
               uses: docker/setup-compose-action@v2
 
             - name: Deploy the flask app using Docker Compose
-              run: docker compose down && docker compose up -d --build --force-recreate -- pull always
+              run: docker compose down && docker compose up -d --build --force-recreate --pull always
 
 
