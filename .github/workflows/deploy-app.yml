@@ -13,6 +13,7 @@ jobs:
 
         env:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER}}
+            DOCKER_Tag: ${{ github.sha}}
 
 
         steps:
