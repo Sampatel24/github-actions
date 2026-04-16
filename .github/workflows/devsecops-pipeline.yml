@@ -1,0 +1,26 @@
+# This workflow defines a DevSecOps pipeline that will connects the other workflows together.
+# It will be triggered manually on workflow_dispatch and will call the other workflows in sequence.
+
+name: DevSecOps End To End Pipeline
+
+on:
+    workflow_dispatch:
+
+jobs:
+
+    code-quality:
+        uses: ./.github/workflows/code-quality.yml
+
+    secret-scan:
+        uses: ./.github/workflows/secrets-scan.yml
+
+    dependency-scan:
+        uses: ./.github/workflows/dependency-check.yml
+
+    docker-scan:
+        uses: ./.github/workflows/docker-lint.yml
+
+    
+
+
+
