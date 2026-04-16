@@ -9,7 +9,7 @@ jobs:
     deploy:
 
         runs-on: ubuntu-latest
-        
+
         env:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER}}
             DOCKER_TAG: ${{ github.sha}}
@@ -48,8 +48,8 @@ jobs:
                 key: ${{ secrets.EC2_SSH_PRIVATE_KEY}}
                 script: |
                     echo "Running the Application"
-                    export DOCKERHUB_USER= ${{ vars.DOCKERHUB_USER}}
-                    export DOCKER_TAG= ${{ github.sha}}
+                    export DOCKERHUB_USER=${{ vars.DOCKERHUB_USER }}
+                    export DOCKER_TAG=${{ github.sha }}
                     echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USER}} --password-stdin
                     cd ~/devops && docker compose down && docker compose up -d --build --force-recreate --pull always
 
