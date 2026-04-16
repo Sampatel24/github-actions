@@ -31,7 +31,7 @@ jobs:
 
     trivy-image-scan:
         needs: build
-        uses: ./.github/workflows/trivy-scan.yml
+        uses: ./.github/workflows/image-scan.yml
 
     
 
