@@ -1,0 +1,12 @@
+# ignore the vulnerability for 
+
+# libncursesw6
+CVE-2025-69720
+#libsystemd0
+CVE-2026-29111
+#libtinfo6 
+CVE-2025-69720 
+#libudev1 
+CVE-2026-29111
+#ncurses-base
+CVE-2025-69720
