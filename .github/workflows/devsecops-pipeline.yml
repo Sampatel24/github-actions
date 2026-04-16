@@ -9,16 +9,16 @@ on:
 jobs:
 
     code-quality:
-        uses: "./.github/workflows/code-quality.yml"
+        uses: ./.github/workflows/code-quality.yml
 
     secret-scan:
-        uses: "./.github/workflows/secrets-scan.yml"
+        uses: ./.github/workflows/secrets-scan.yml
 
     dependency-scan:
-        uses: "./.github/workflows/dependency-check.yml"
+        uses: ./.github/workflows/dependency-scan.yml
 
     docker-scan:
-        uses: "./.github/workflows/docker-scan.yml"
+        uses: ./.github/workflows/docker-lint.yml
 
     
 
