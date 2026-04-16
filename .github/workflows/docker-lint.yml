@@ -1,4 +1,4 @@
-# SCan the Dockerfile for best practices and common errors using hadolint
+# Scan the Dockerfile for best practices and common errors using hadolint
 name: Docker Lint
 
 on:
