@@ -1,0 +1,28 @@
+# Package - issues or vulnerabilities related to packages
+# pip-audit is a tool that checks Python dependencies for known vulnerabilities.
+# It audits the installed packages in a Python environment against a database of known vulnerabilities, helping developers identify and address security issues in their dependencies.
+name: Dependency Scan
+
+on:
+    workflow_call:
+
+jobs:
+
+    dependency-check:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Code Checkout
+              uses: action/checkout@v4
+
+            - name: Setup Python 3.12
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.12"
+            
+            - name: Install Pip Audit
+              run: pip install pip-audit
+
+            - name: Audit Dependencies
+              run: pip-audit -r requirements.txt
